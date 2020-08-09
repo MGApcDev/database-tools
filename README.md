@@ -1,3 +1,4 @@
+### Install
 ```
 cd ~
 git clone https://github.com/MGApcDev/database-tools.git
