@@ -5,14 +5,17 @@ if [ "$1" == "" ] ; then
   exit
 fi
 
-source ~/database-tools/load-env.sh
-source ~/database-tools/load-base-env.sh
+BASEDIR=$(dirname "$0")
 
-BUILD_SQL_DUMP_NAME="$HOME/database-tools/aaa-dump--${DB_DATABASE}.sql.gz"
+source $BASEDIR/../load-env.sh
+source $BASEDIR/../load-base-env.sh
+
 MYSQL_DUMP_OPTIONS="--set-gtid-purged=OFF --single-transaction --quick"
 
-echo "Loading dump $1 ..."
+echo "Loading to database '${DB_DATABASE}' as user '${DB_USERNAME}'"
+echo "Dropping all tables"
 
 cat ~/database-tools/drop-all-tables.sql | MYSQL_PWD="${DB_PASSWORD}" mysql -u${DB_USERNAME} ${DB_DATABASE}
 
+echo "Loading dump $1 ..."
 gzcat $1 | MYSQL_PWD="${DB_PASSWORD}" mysql ${DB_DATABASE} -u ${DB_USERNAME}
