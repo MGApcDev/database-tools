@@ -7,6 +7,8 @@ for a in .env ; do
       key=`echo $line|cut -d= -f1`
       value=`echo $line|cut -d= -f2-|sed "s/^[\"']//"|sed "s/[\"']$//"`
       export $key="$value"
+      # echo $key
+      # echo $value
     done < $a
   fi
 done
