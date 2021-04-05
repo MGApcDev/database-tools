@@ -3,6 +3,7 @@ Simple database management tools for MySQL, based on `.env` files.
 ### Requirements
 - This project assumes you have MySQL installed with a root user with no password.
 - This can be verified by running `mysql -uroot`. If you get access to MySQL it is setup correctly.
+- MySQL should be running on localhost (127.0.0.1)
 
 ### Install
 
@@ -46,7 +47,7 @@ loaddb.sh dump.sql.gz
 ### .env file
 
 To run above commands, specific variables is expected in the `.env` file.
-```
+```bash
 DB_DATABASE=...
 DB_USERNAME=...
 DB_PASSWORD=...
