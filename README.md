@@ -1,5 +1,9 @@
 Simple database management tools for MySQL, based on `.env` files.
 
+### Requirements
+- This project assumes you have MySQL installed with a root user with no password.
+- This can be verified by running `mysql -uroot`. If you get access to MySQL it is setup correctly.
+
 ### Install
 
 ```bash
