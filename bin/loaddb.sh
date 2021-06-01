@@ -17,7 +17,7 @@ if [ -f "$FILE" ]; then
   echo "Loading to database '${DB_DATABASE}' as user '${DB_USERNAME}'"
   echo "Dropping all tables"
 
-  cat ~/database-tools/drop-all-tables.sql | MYSQL_PWD="${DB_PASSWORD}" mysql -u${DB_USERNAME} ${DB_DATABASE}
+  cat $BASEDIR/../drop-all-tables.sql | MYSQL_PWD="${DB_PASSWORD}" mysql -u${DB_USERNAME} ${DB_DATABASE}
 
   echo "Loading dump $1 ..."
   gzcat $1 | MYSQL_PWD="${DB_PASSWORD}" mysql ${DB_DATABASE} -u ${DB_USERNAME}
